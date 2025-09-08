@@ -2,13 +2,18 @@ const { PrismaClient } = require('@prisma/client');
 const { calculateTransaction } = require('../services/transaction');
 const prisma = new PrismaClient();
 
+//Handle creating a new transaction
 exports.create = async (req, res) => {
   try {
-    const { amount, recipient, currency } = req.body;
-    if (!amount || !recipient || !currency) {
+
+    const { amount, recipient, currency } = req.body; //destructure req.body
+    if (!amount || !recipient || !currency) { // check if all fie;ds are there
       return res.status(400).json({ error: 'Amount, recipient, and currency required' });
     }
+
     const { exchangeRate, fee, netAmount } = calculateTransaction(amount, currency);
+
+    //save transaction to db
     const transaction = await prisma.transaction.create({
       data: {
         userId: req.user.userId,
@@ -20,8 +25,9 @@ exports.create = async (req, res) => {
         netAmount,
       },
     });
-    res.status(201).json(transaction);
+    res.status(201).json(transaction); // successfully created
   } catch (err) {
+    // error saving transaction/bad req
     res.status(400).json({ error: err.message });
   }
 };
