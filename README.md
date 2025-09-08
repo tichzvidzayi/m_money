@@ -118,7 +118,7 @@ Optional: Frontend Setup
 
 ### Navigate to Frontend
 ``` 
-cd  m_money/frontend  
+cd  m_money/frontend/mmoney  
 ```
 
 
