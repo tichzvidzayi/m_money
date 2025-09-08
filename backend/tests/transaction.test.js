@@ -4,19 +4,21 @@ const { PrismaClient } = require('@prisma/client');
 const { generateAccessToken } = require('../src/utils/jwt');
 const prisma = new PrismaClient();
 
+// tests for transactions endpoints
 describe('Transaction API', () => {
   let token;
-  let userId;
+  let user_id;
 
   beforeAll(async () => {
     await prisma.user.deleteMany();
     const user = await prisma.user.create({
       data: { email: 'test@example.com', password: 'hashed' },
     });
-    userId = user.id;
-    token = generateAccessToken(userId, 1);
+    user_id = user.id;
+    token = generateAccessToken(user_id, 1);
   });
 
+ // test create transactions
   it('POST /transactions should create transaction', async () => {
     const res = await request(app)
       .post('/transactions')
@@ -27,6 +29,7 @@ describe('Transaction API', () => {
     expect(res.body.currency).toBe('USD');
   });
 
+  // test retrieve of transactions
   it('GET /transactions should return transactions', async () => {
     const res = await request(app)
       .get('/transactions?page=1&limit=10')
