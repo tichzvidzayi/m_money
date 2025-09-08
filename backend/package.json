@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "test": "jest",
+    "prisma:seed": "node prisma/seed.js"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +19,7 @@
     "express": "^5.1.0",
     "express-rate-limit": "^8.1.0",
     "jsonwebtoken": "^9.0.2",
+    "npx": "^10.2.2",
     "prisma": "^6.15.0",
     "swagger-ui-express": "^5.0.1"
   },
