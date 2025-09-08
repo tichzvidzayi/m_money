@@ -33,7 +33,7 @@ exports.create = async (req, res) => {
 };
 
 exports.getAll = async (req, res) => {
-  try {
+  try { // Handle fetching all transactions
     const { currency, startDate, endDate, minAmount, maxAmount, page = 1, limit = 10 } = req.query;
     const skip = (page - 1) * parseInt(limit);
     let where = { userId: req.user.userId };
