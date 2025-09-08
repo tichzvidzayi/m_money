@@ -1,5 +1,4 @@
 # M-money Application
-===================
 
 M-money is a web application for handling money transfers with currency conversion, built with a Node.js/Express, MySQL, Prisma backend and an optional React and TailwindCSS frontend. This README provides instructions for running the backend, testing, using Postman collections, and accessing Swagger APIs, along with optional frontend setup.
 
