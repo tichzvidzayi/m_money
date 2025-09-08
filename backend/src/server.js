@@ -10,6 +10,7 @@ findFreePort(defaultPort, (err, freePort) => {
     process.exit(1);
   }
   app.listen(freePort, () => {
-    console.log(`Mmoney Server running on port => ${freePort} at 12:56 PM SAST, Monday, September 08, 2025`);
+   const now = new Date();
+   console.log(`Mmoney Server running on port => ${freePort}. Started at ${now.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true, timeZone: 'Africa/Johannesburg' })} SAST, ${now.toLocaleString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric', timeZone: 'Africa/Johannesburg' })}`);
   });
 });

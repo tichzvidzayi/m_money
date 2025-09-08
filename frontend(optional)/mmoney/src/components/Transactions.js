@@ -77,7 +77,7 @@ const Transactions = () => {
           />
           <select value={currency} onChange={(e) => setCurrency(e.target.value)} className="input">
             <option value="USD">USD</option>
-            <option value="BWP">BWP</option>
+            <option value="KES">KES</option>
           </select>
           <button type="submit" className="btn btn-primary">Send Money</button>
         </form>
@@ -90,7 +90,7 @@ const Transactions = () => {
             type="text"
             value={filterCurrency}
             onChange={(e) => setFilterCurrency(e.target.value)}
-            placeholder="Filter by Currency (USD/BWP)"
+            placeholder="Filter by Currency (USD/KES)"
             className="input"
           />
           <input
