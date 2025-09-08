@@ -190,7 +190,7 @@ Project Structure
 ##  Improvements and Contributions 
 
 - Adopt TypeScript: Convert backend and frontend (React) to TypeScript for type safety, reducing bugs and improving maintainability.
-
+- The M-Money can also use OAuth alongside JWT for authentication.
 - AWS Infrastructure: Deploy backend on AWS Lambda with API Gateway for scalability.
   Use Amazon RDS (PostgreSQL) for managed database. Integrate AWS Cognito for secure authentication and S3 for logs.
 
