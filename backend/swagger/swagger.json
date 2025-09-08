@@ -1,0 +1,140 @@
+{
+  "openapi": "3.0.0",
+  "info": { "title": "Minit Money API", "version": "1.0.0" },
+  "servers": [{ "url": "http://localhost:3000" }],
+  "paths": {
+    "/auth/register": {
+      "post": {
+        "summary": "Register a new user",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": { "type": "string" },
+                  "password": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "User registered" },
+          "400": { "description": "Bad request" }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "summary": "Login user",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": { "type": "string" },
+                  "password": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Access and refresh tokens" },
+          "401": { "description": "Unauthorized" }
+        }
+      }
+    },
+    "/auth/refresh": {
+      "post": {
+        "summary": "Refresh access token",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": { "refreshToken": { "type": "string" } }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "New access token" },
+          "401": { "description": "Invalid refresh token" }
+        }
+      }
+    },
+    "/transactions": {
+      "post": {
+        "summary": "Create transaction",
+        "security": [{ "bearerAuth": [] }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "amount": { "type": "number" },
+                  "recipient": { "type": "string" },
+                  "currency": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "Transaction created" },
+          "400": { "description": "Bad request" }
+        }
+      },
+      "get": {
+        "summary": "Get transactions",
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [
+          { "name": "currency", "in": "query", "schema": { "type": "string" } },
+          {
+            "name": "startDate",
+            "in": "query",
+            "schema": { "type": "string" }
+          },
+          { "name": "endDate", "in": "query", "schema": { "type": "string" } },
+          {
+            "name": "minAmount",
+            "in": "query",
+            "schema": { "type": "number" }
+          },
+          {
+            "name": "maxAmount",
+            "in": "query",
+            "schema": { "type": "number" }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "schema": { "type": "integer", "default": 1 }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": { "type": "integer", "default": 10 }
+          }
+        ],
+        "responses": {
+          "200": { "description": "List of transactions" },
+          "401": { "description": "Unauthorized" }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
