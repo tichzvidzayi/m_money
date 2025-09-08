@@ -187,7 +187,7 @@ Project Structure
         
 
 
-## ** Improvements and Contributions **
+##  Improvements and Contributions 
 
 - Adopt TypeScript: Convert backend and frontend (React) to TypeScript for type safety, reducing bugs and improving maintainability.
 AWS Infrastructure:
