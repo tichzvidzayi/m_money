@@ -15,8 +15,8 @@ services:
       - db
     environment:
       DATABASE_URL: mysql://root:root@db:3306/m_money
-      JWT_SECRET: your-secret-key
-      REFRESH_SECRET: your-refresh-secret
+      JWT_SECRET: 7c4e1b8a0f9d3c6e2a5b9f1d4c7e0a3b6f8e2d9c1a4b7f0
+      REFRESH_SECRET: 9d2a6f3b8c1e0a4f7d9b3e6c2f1a8d0b4e7c9f3a1b6e2d8
       PORT: 3000
     ports:
       - "3000:3000"
