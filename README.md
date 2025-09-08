@@ -7,7 +7,7 @@ Prerequisites
 
 *   **Node.js**: v18 or higher
     
-*   **npm**: v7 or higher
+*   **npm**: v9 or higher
     
 *   **PostgreSQL**: For the database (configured via Prisma)
     
